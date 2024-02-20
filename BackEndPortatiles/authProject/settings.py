@@ -122,12 +122,12 @@ DATABASES = {
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': '',
-#         'USER': '',
+#         'USER': 'root',
 #         'PASSWORD': '',
-#         'HOST': '',
-#         'PORT': '5432',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
 #     }
 # }
 

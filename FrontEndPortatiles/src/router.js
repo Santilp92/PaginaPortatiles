@@ -11,26 +11,26 @@ const routes = [
     name: "root",
     component: App,
   },
-  // {
-  //   path: '/user/logIn',
-  //   name: "logIn",
-  //   component: LogIn,
-  // },
-  // {
-  //   path: '/user/signUp',
-  //   name: "signUp",
-  //   component: SignUp,
-  // },
+  {
+    path: '/user/logIn',
+    name: "logIn",
+    component: LogIn,
+  },
+  {
+    path: '/user/signUp',
+    name: "signUp",
+    component: SignUp,
+  },
   {
     path: '/user/home',
     name: "home",
     component: Home,
   },
-  // {
-  //   path: '/user/account',
-  //   name: "account",
-  //   component: Account
-  // }
+  {
+    path: '/user/account',
+    name: "account",
+    component: Account
+  }
 ];
 const router = createRouter({
   history: createWebHistory(),

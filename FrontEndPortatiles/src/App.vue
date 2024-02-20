@@ -33,14 +33,13 @@
         >
           <li>
             <a
-              href="components/Home.vue"
+              href=""
               class="nav-link link-light link-opacity-75-hover"
-              v-if="is_auth"
+              v-on:click="loadHome"
               id="home"
               >Home</a
             >
           </li>
-          <!-- v-on:click="loadHome" no es necesario-->
           <!-- <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
           <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
@@ -58,7 +57,7 @@
         </form>
 
         <div class="text-end">
-          <!-- <button
+          <button
             type="button"
             class="btn btn-outline-light me-2"
             v-if="!is_auth"
@@ -89,7 +88,7 @@
             v-on:click="logOut"
           >
             LogOut
-          </button> -->
+          </button>
         </div>
       </div>
     </div>
@@ -97,10 +96,11 @@
 
   <div id="app" class="app">
     <div class="main-component">
-      <!-- v-on:completedLogIn="completedLogIn"
+      <router-view        
         v-on:completedSignUp="completedSignUp"
-        v-on:logOut="logOut" -->
-      <router-view v:on:loadHome="loadHome"> </router-view>
+        v-on:completedLogIn="completedLogIn"
+        v-on:logOut="logOut"
+      ></router-view>
     </div>
   </div>
 
@@ -206,47 +206,43 @@ export default {
   components: {},
 
   methods: {
-    // verifyAuth: function () {
-    //   if (this.is_auth == false) this.$router.push({ name: "logIn" });
-    // },
     verifyAuth: function () {
-      this.$router.push({ name: "home" });
-      // this.is_auth = localStorage.getItem("isAuth") || false;
-      // if (this.is_auth == false) this.$router.push({ name: "logIn" });
-      // else this.$router.push({ name: "home" });
+      this.is_auth = localStorage.getItem("isAuth") || false;
+      this.$router.push({ name: "home" })
     },
-    // loadLogIn: function () {
-    //   this.$router.push({ name: "logIn" });
-    // },
-    // loadSignUp: function () {
-    //   this.$router.push({ name: "signUp" });
-    // },
+
+    loadLogIn: function () {
+      this.$router.push({ name: "logIn" });
+    },
+    loadSignUp: function () {
+      this.$router.push({ name: "signUp" });
+    },
     loadHome: function () {
       this.$router.push({ name: "home" });
     },
-    //   loadAccount: function () {
-    //     this.$router.push({ name: "account" });
-    //   },
+    loadAccount: function () {
+      this.$router.push({ name: "account" });
+    },
 
-    //   completedLogIn: function (data) {
-    //     localStorage.setItem("isAuth", true);
-    //     localStorage.setItem("username", data.username);
-    //     localStorage.setItem("token_access", data.token_access);
-    //     localStorage.setItem("token_refresh", data.token_refresh);
-    //     alert("Autenticación Exitosa");
-    //     this.verifyAuth();
-    //   },
+    completedLogIn: function (data) {
+      localStorage.setItem("isAuth", true);
+      localStorage.setItem("username", data.username);
+      localStorage.setItem("token_access", data.token_access);
+      localStorage.setItem("token_refresh", data.token_refresh);
+      alert("Autenticación Exitosa");
+      this.verifyAuth();
+    },
 
-    //   completedSignUp: function (data) {
-    //     alert("Registro Exitoso");
-    //     this.completedLogIn(data);
-    //   },
+    completedSignUp: function (data) {
+      alert("Registro Exitoso");
+      this.completedLogIn(data);
+    },
 
-    //   logOut: function () {
-    //     localStorage.clear();
-    //     alert("Sesión Cerrada");
-    //     this.verifyAuth();
-    //   },
+    logOut: function () {
+      localStorage.clear();
+      alert("Sesión Cerrada");
+      this.verifyAuth();
+    },
   },
 
   created: function () {

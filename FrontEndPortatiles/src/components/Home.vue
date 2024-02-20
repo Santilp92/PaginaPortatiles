@@ -353,7 +353,8 @@
       </div>
     </div>
   </div> -->
-  <div id="pcModal" class="modal container-fluid">
+  
+  <!-- <div id="pcModal" class="modal container-fluid">
     <div class="modal-content">
       <span class="close-button">&times;</span>
       <h2 id="modalModelo"></h2>
@@ -368,20 +369,20 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 </template>
 
 <script>
 import axios from "axios";
 
-//Computador Portátil LENOVO 15,6" Pulgadas IdeaPad Slim 3 Táctil - Intel Core i5 - RAM 8GB - Disco SSD 512GB - Gris
 const pc_portatiles = [
   {
     id: 1,
     marca: "LENOVO",
     modelo: "IdeaPad Slim 3 Tactil",
     pantalla: 15.6,
+    procesador:"Intel Core i7",
     img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
     precio: 2099000,
     ram: 8,
@@ -394,78 +395,19 @@ const pc_portatiles = [
     marca: "LENOVO",
     modelo: "IdeaPad Slim 3 Tactil",
     pantalla: 15.6,
+    procesador:"Intel Core i7",
     img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
     precio: 2099000,
     ram: 8,
     rom: 512,
     color: "Gris",
     resumen: "",
-  },
-  {
+  },{
     id: 1,
     marca: "LENOVO",
     modelo: "IdeaPad Slim 3 Tactil",
     pantalla: 15.6,
-    img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
-    precio: 2099000,
-    ram: 8,
-    rom: 512,
-    color: "Gris",
-    resumen: "",
-  },
-  {
-    id: 1,
-    marca: "LENOVO",
-    modelo: "IdeaPad Slim 3 Tactil",
-    pantalla: 15.6,
-    img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
-    precio: 2099000,
-    ram: 8,
-    rom: 512,
-    color: "Gris",
-    resumen: "",
-  },
-  {
-    id: 1,
-    marca: "LENOVO",
-    modelo: "IdeaPad Slim 3 Tactil",
-    pantalla: 15.6,
-    img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
-    precio: 2099000,
-    ram: 8,
-    rom: 512,
-    color: "Gris",
-    resumen: "",
-  },
-  {
-    id: 1,
-    marca: "LENOVO",
-    modelo: "IdeaPad Slim 3 Tactil",
-    pantalla: 15.6,
-    img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
-    precio: 2099000,
-    ram: 8,
-    rom: 512,
-    color: "Gris",
-    resumen: "",
-  },
-  {
-    id: 1,
-    marca: "LENOVO",
-    modelo: "IdeaPad Slim 3 Tactil",
-    pantalla: 15.6,
-    img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
-    precio: 2099000,
-    ram: 8,
-    rom: 512,
-    color: "Gris",
-    resumen: "",
-  },
-  {
-    id: 1,
-    marca: "LENOVO",
-    modelo: "IdeaPad Slim 3 Tactil",
-    pantalla: 15.6,
+    procesador:"Intel Core i7",
     img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
     precio: 2099000,
     ram: 8,
@@ -718,4 +660,7 @@ export default {
 .btn-toggle-nav a:focus {
   background-color: var(--bs-tertiary-bg);
 }
+
+
+
 </style>
