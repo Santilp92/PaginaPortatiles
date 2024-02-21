@@ -171,13 +171,13 @@
       </li>
     </ul>
   </div>
-  <div
+  <!-- <div
     class="container-fluid contenedor-general"
     id="card-auto"
     style="width: 100%"
-  ></div>
-  <!-- <div class="container-fluid contenedor-general" style="width: 100%">
-    
+  ></div> -->
+  
+  <div class="container-fluid contenedor-general" style="width: 100%">    
     <div class="card my-3 mx-3">
       <div class="row g-0" id="contenedor-card">
         <div class="col-md-4">
@@ -230,7 +230,7 @@
                   class="col align-self-center offset-md-2 text-end"
                   id="detalle"
                 >
-                  <h6><a href="">ver más detalles</a></h6>
+                  <h6><a v-on:click.prevent="processPortatil" href="">ver más detalles</a></h6>
                 </div>
               </div>
             </div>
@@ -238,7 +238,7 @@
         </div>
       </div>
     </div>
-    <div class="card my-3 mx-3">
+    <!-- <div class="card my-3 mx-3">
       <div class="row g-0">
         <div class="col-md-4">
           <div class="container">
@@ -351,26 +351,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </div> -->
-  
-  <!-- <div id="pcModal" class="modal container-fluid">
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <h2 id="modalModelo"></h2>
-      <h2 id="modalPrecio"></h2>
-      <h2 id="modalMarca"></h2>
-      <div class="modal-body row">
-        <div class="col">
-          <img id="modalPoster" src="" alt="Poster" />
-        </div>
-        <div class="col">
-          <p id="modalOverview" style="color: #aaa"></p>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
+    </div> -->
+  </div>
 </template>
 
 <script>
@@ -382,7 +364,7 @@ const pc_portatiles = [
     marca: "LENOVO",
     modelo: "IdeaPad Slim 3 Tactil",
     pantalla: 15.6,
-    procesador:"Intel Core i7",
+    procesador: "Intel Core i7",
     img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
     precio: 2099000,
     ram: 8,
@@ -391,23 +373,24 @@ const pc_portatiles = [
     resumen: "",
   },
   {
-    id: 1,
-    marca: "LENOVO",
+    id: 2,
+    marca: "HP",
     modelo: "IdeaPad Slim 3 Tactil",
     pantalla: 15.6,
-    procesador:"Intel Core i7",
+    procesador: "Intel Core i7",
     img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
     precio: 2099000,
     ram: 8,
     rom: 512,
     color: "Gris",
     resumen: "",
-  },{
-    id: 1,
-    marca: "LENOVO",
+  },
+  {
+    id: 3,
+    marca: "ASUS",
     modelo: "IdeaPad Slim 3 Tactil",
     pantalla: 15.6,
-    procesador:"Intel Core i7",
+    procesador: "Intel Core i7",
     img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
     precio: 2099000,
     ram: 8,
@@ -417,11 +400,8 @@ const pc_portatiles = [
   },
 ];
 
-// document.querySelector(".close-button").addEventListener("click", function () {
-//   document.getElementById("pcModal").style.display = "none";
-// });
-
 export default {
+  emits: ['completedSignUp', 'completedLogIn', 'logOut','loadPortatil'],
   name: "Home",
   data() {
     return {
@@ -449,7 +429,7 @@ export default {
   },
 
   mounted() {
-    this.loadPopularPc();
+    // this.loadPopularPc();
 
     // axios
     //   .get("http://127.0.0.1:8000/lista/")
@@ -466,104 +446,96 @@ export default {
   },
 
   methods: {
-    async loadPopularPc() {
-      try {
-        const lista = pc_portatiles;
-        const pcContainer = document.querySelector("#card-auto");
-        pcContainer.innerHTML = ""; // Limpiar el contenedor para nuevas tarjetas
-        lista.forEach((pc) => {
-          const pcElement = this.createPcElement(pc);
-          pcContainer.appendChild(pcElement);
-        });
-      } catch (error) {
-        console.error("Error al mostrar las películas:", error);
-      }
-    },
+    // createPcElement(pc) {
+    //   const pcElement = document.createElement("div");
+    //   pcElement.classList.add("card-container");
+    //   pcElement.innerHTML = `
+    // <div class= "card my-3 mx-3">
+    // <div class="row g-0" id="contenedor-card">
+    //     <div class="col-md-4">
+    //       <div class="container" id="contenedor-img">
+    //         <img
+    //           src="${pc.img}"
+    //           class="img-fluid"
+    //           alt="Imagen pc"
+    //         />
+    //       </div>
+    //     </div>
+    //     <div class="col-md-8" id="contenedor-info">
+    //       <div class="card-body">
+    //         <div class="row">
+    //           <h5 class="card-title" id="nombre-pc">
+    //             Computador Portátil ${pc.marca} - ${pc.pantalla}" ${pc.modelo} - ${pc.procesador} - ${pc.ram}GB - Disco SSD${pc.rom}GB - ${pc.color}.
+    //           </h5>
+    //         </div>
+    //         <div class="row" id="marca">
+    //           <p>
+    //             <button
+    //               type="button"
+    //               class="btn btn-outline-secondary"
+    //               disabled
+    //             >
+    //               ${pc.marca}
+    //             </button>
+    //           </p>
+    //         </div>
+    //         <div class="row" id="datos-pc">
+    //           <div class="col-4" id="procesador">
+    //             <h6>Procesadr</h6>
+    //             <p>${pc.procesador}</p>
+    //           </div>
+    //           <div class="col-4" id="ram">
+    //             <h6>Memoria RAM</h6>
+    //             <p>${pc.ram} GB</p>
+    //           </div>
+    //           <div class="col-4" id="rom">
+    //             <h6>Disco Duro</h6>
+    //             <p>Disco SSD ${pc.rom}GB</p>
+    //           </div>
+    //           <div class="row">
+    //             <div class="col-6" id="precio">
+    //               <h6>Precio</h6>
+    //               <p>$ ${pc.precio}</p>
+    //             </div>
+    //             <div
+    //               class="col align-self-center offset-md-2 text-end"
+    //               id="detalle"
+    //             >
+    //               <p class="invisible" id="idPc">${pc.id}</p>
+    //               <h6><a @:click="proccesPortatil" class="verDetalles" href="#">ver más detalles</a>                </h6>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    // `;
+    //   // pcElement
+    //   //   .querySelector(".detalle-pc")
+    //   //   .addEventListener("click", function () {
+    //   //     showModal(pc);
+    //   //   });
+    //   return pcElement;
+    // },
 
-    createPcElement(pc) {
-      const pcElement = document.createElement("div");
-      pcElement.classList.add("card-container");
-      pcElement.innerHTML = `
-    <div class= "card my-3 mx-3">
-    <div class="row g-0" id="contenedor-card">
-        <div class="col-md-4">
-          <div class="container" id="contenedor-img">
-            <img
-              src="${pc.img}"
-              class="img-fluid"
-              alt="Imagen pc"
-            />
-          </div>
-        </div>
-        <div class="col-md-8" id="contenedor-info">
-          <div class="card-body">
-            <div class="row">
-              <h5 class="card-title" id="nombre-pc">
-                Computador Portátil ${pc.marca} - ${pc.pantalla}" ${pc.modelo} - ${pc.procesador} - ${pc.ram}GB - Disco SSD${pc.rom}GB - ${pc.color}.
-              </h5>
-            </div>
-            <div class="row" id="marca">
-              <p>
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  disabled
-                >
-                  ${pc.marca}
-                </button>
-              </p>
-            </div>
-            <div class="row" id="datos-pc">
-              <div class="col-4" id="procesador">
-                <h6>Procesadr</h6>
-                <p>${pc.procesador}</p>
-              </div>
-              <div class="col-4" id="ram">
-                <h6>Memoria RAM</h6>
-                <p>${pc.ram} GB</p>
-              </div>
-              <div class="col-4" id="rom">
-                <h6>Disco Duro</h6>
-                <p>Disco SSD ${pc.rom}GB</p>
-              </div>
-              <div class="row">
-                <div class="col-6" id="precio">
-                  <h6>Precio</h6>
-                  <p>$ ${pc.precio}</p>
-                </div>
-                <div
-                  class="col align-self-center offset-md-2 text-end"
-                  id="detalle"
-                >
-                  <h6><a class="detalle-pc" href="" @click.prevent="showModal(pc)">ver más detalles</a></h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    `;
-      // pcElement
-      //   .querySelector(".detalle-pc")
-      //   .addEventListener("click", function () {
-      //     showModal(pc);
-      //   });
-      return pcElement;
-    },
+    // loadPopularPc() {
+    //   try {
+    //     const lista = pc_portatiles;
+    //     const pcContainer = document.querySelector("#card-auto");
+    //     pcContainer.innerHTML = ""; // Limpiar el contenedor para nuevas tarjetas
+    //     lista.forEach((pc) => {
+    //       const pcElement = this.createPcElement(pc);
+    //       pcContainer.appendChild(pcElement);
+    //     });
+    //   } catch (error) {
+    //     console.error("Error al mostrar las películas:", error);
+    //   }
+    // },
+    
 
-    showModal(pc) {
-      // Aquí llenas la información del modal con los datos del pc
-      document.getElementById("modalModelo").textContent =
-        "Modelo: " + pc.modelo;
-      document.getElementById("modalPrecio").textContent =
-        "Precio: " + pc.precio;
-      document.getElementById("modalMarca").textContent = "Marca: " + pc.marca;
-      document.getElementById("modalPoster").src = pc.img;
-      document.getElementById("modalPoster").alt = pc.nombre;
-      document.getElementById("modalOverview").textContent = pc.resumen;
-      // Muestra el modal
-      document.getElementById("pcModal").style.display = "flex";
+    processPortatil: function () {
+      this.$emit("loadPortatil");
     },
   },
 
@@ -590,9 +562,10 @@ export default {
   //       });
   //   },
   // },
-  // created: async function () {
-  //   this.getData();
-  // },
+  
+  created: async function () {
+    
+  },
 };
 </script>
 
@@ -660,7 +633,4 @@ export default {
 .btn-toggle-nav a:focus {
   background-color: var(--bs-tertiary-bg);
 }
-
-
-
 </style>

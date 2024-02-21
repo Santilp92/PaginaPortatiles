@@ -4,6 +4,7 @@ import LogIn from "./components/LogIn.vue";
 import SignUp from "./components/SignUp.vue";
 import Home from './components/Home.vue'
 import Account from './components/Account.vue'
+import Portatil from './components/Portatil.vue'
 
 const routes = [
   {
@@ -12,24 +13,29 @@ const routes = [
     component: App,
   },
   {
-    path: '/user/logIn',
+    path: '/logIn',
     name: "logIn",
     component: LogIn,
   },
   {
-    path: '/user/signUp',
+    path: '/signUp',
     name: "signUp",
     component: SignUp,
   },
   {
-    path: '/user/home',
+    path: '/home',
     name: "home",
     component: Home,
   },
   {
     path: '/user/account',
     name: "account",
-    component: Account
+    component: Account,
+  },
+  {
+    path: '/portatil',
+    name: "portatil",
+    component: Portatil
   }
 ];
 const router = createRouter({
