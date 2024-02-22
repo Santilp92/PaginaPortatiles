@@ -34,7 +34,7 @@
           >
             <li>
               <a
-                href=""
+                href="#"
                 class="nav-link link-light link-opacity-75-hover"
                 v-on:click="loadHome"
                 id="home"
@@ -43,17 +43,13 @@
             </li>
             <li>
               <a
-                href=""
-                v-if="is_user"
-                v-on:click="loadNewPC"
+                href="#"
+                v-if="isAuth"
+                v-on:click="loadNewPc"
                 class="nav-link link-light link-opacity-75-hover"
                 >Add Pc</a
               >
             </li>
-            <!-- 
-          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
           </ul>
 
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -70,7 +66,7 @@
             <button
               type="button"
               class="btn btn-outline-light me-2"
-              v-if="!is_auth"
+              v-if="!isAuth"
               v-on:click="loadLogIn"
             >
               Login
@@ -78,7 +74,7 @@
             <button
               type="button"
               class="btn btn-warning"
-              v-if="!is_auth"
+              v-if="!isAuth"
               v-on:click="loadSignUp"
             >
               Sign-up
@@ -86,7 +82,7 @@
             <button
               type="button"
               class="btn btn-outline-light me-2"
-              v-if="is_auth"
+              v-if="isAuth"
               v-on:click="loadAccount"
             >
               Account
@@ -94,7 +90,7 @@
             <button
               type="button"
               class="btn btn-warning"
-              v-if="is_auth"
+              v-if="isAuth"
               v-on:click="logOut"
             >
               LogOut
@@ -209,27 +205,21 @@ export default {
   name: "App",
   data: function () {
     return {
-      is_auth: false,
-      is_user: false,
+      isAuth: false,      
     };
   },
 
   components: {},
 
-  mounted() {
-    this.loadHome();
-  },
+  mounted() {},
 
   methods: {
     verifyAuth: function () {
-      this.is_auth = localStorage.getItem("isAuth") || false;
-      this.is_user = localStorage.getItem("isUser") || false;
-      console.log(this.is_auth);
-      console.log(typeof this.is_auth);
-      if (this.is_auth){
-        console.log("entro al if" + this.is_auth);
-        this.$router.push({name:"home"})
-        this.is_user = true;
+      if (this.isAuth) {                                                           
+        this.$router.push({ name: 'user-home' });
+      }
+      else{
+        this.$router.push({ name: 'home' });
       }
     },
 
@@ -240,7 +230,12 @@ export default {
       this.$router.push({ name: "signUp" });
     },
     loadHome: function () {
-      this.$router.push({ name: "home" });
+      if (this.isAuth){
+        this.$router.push({ name: 'user-home' });
+      }
+      else{
+        this.$router.push({ name: "home" });
+      }
     },
     loadAccount: function () {
       this.$router.push({ name: "account" });
@@ -255,8 +250,7 @@ export default {
     },
 
     completedLogIn: function (data) {
-      localStorage.setItem("isAuth", true);
-      localStorage.setItem("isUser", true);
+      this.isAuth = true;
       localStorage.setItem("username", data.username);
       localStorage.setItem("token_access", data.token_access);
       localStorage.setItem("token_refresh", data.token_refresh);
@@ -270,15 +264,14 @@ export default {
     },
 
     logOut: function () {
-      localStorage.clear();
-      this.is_user = false;
+      this.isAuth = false;
       alert("Sesión Cerrada");
       this.verifyAuth();
     },
   },
 
   created: function () {
-    this.verifyAuth();
+    this.loadHome();
   },
 };
 </script>

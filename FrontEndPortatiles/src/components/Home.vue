@@ -635,7 +635,6 @@ export default {
   //   },
   // },
 
-  created: async function () {},
 };
 </script>
 
@@ -644,9 +643,6 @@ export default {
   overflow: auto;
 }
 
-/* .side-bar {
-  position: fixed;
-} */
 
 /* bootstrap */
 

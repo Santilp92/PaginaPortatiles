@@ -7,6 +7,7 @@ import Account from './components/Account.vue'
 import Portatil from './components/Portatil.vue'
 import NewPc from './components/NewPc.vue'
 
+
 const routes = [
   {
     path: '/',
@@ -29,6 +30,12 @@ const routes = [
     component: Home,
   },
   {
+    path: '/user/home',
+    name: 'user-home',
+    component: Home,
+    meta: { requiresAuth: true }, 
+  },
+  {
     path: '/user/account',
     name: "account",
     component: Account,
@@ -45,6 +52,9 @@ const routes = [
   },
 
 ];
+
+
+
 const router = createRouter({
   history: createWebHistory(),
   routes,
