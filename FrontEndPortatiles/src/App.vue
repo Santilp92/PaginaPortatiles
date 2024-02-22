@@ -41,7 +41,16 @@
                 >Home</a
               >
             </li>
-            <!-- <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+            <li>
+              <a
+                href=""
+                v-if="is_user"
+                v-on:click="loadNewPC"
+                class="nav-link link-light link-opacity-75-hover"
+                >Add Pc</a
+              >
+            </li>
+            <!-- 
           <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
           <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
           <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
@@ -100,6 +109,7 @@
         v-on:completedLogIn="completedLogIn"
         v-on:logOut="logOut"
         v-on:loadPortatil="loadPortatil"
+        v-on:loadNewPc="loadNewPc"
       ></router-view>
     </div>
 
@@ -200,19 +210,27 @@ export default {
   data: function () {
     return {
       is_auth: false,
+      is_user: false,
     };
   },
 
   components: {},
 
-  mounted(){
+  mounted() {
     this.loadHome();
   },
 
   methods: {
     verifyAuth: function () {
       this.is_auth = localStorage.getItem("isAuth") || false;
-      // this.$router.push({ name: "home" });
+      this.is_user = localStorage.getItem("isUser") || false;
+      console.log(this.is_auth);
+      console.log(typeof this.is_auth);
+      if (this.is_auth){
+        console.log("entro al if" + this.is_auth);
+        this.$router.push({name:"home"})
+        this.is_user = true;
+      }
     },
 
     loadLogIn: function () {
@@ -228,12 +246,17 @@ export default {
       this.$router.push({ name: "account" });
     },
 
-    loadPortatil: function(){
+    loadPortatil: function (pc) {
       this.$router.push({ name: "portatil" });
+    },
+
+    loadNewPc: function () {
+      this.$router.push({ name: "newPc" });
     },
 
     completedLogIn: function (data) {
       localStorage.setItem("isAuth", true);
+      localStorage.setItem("isUser", true);
       localStorage.setItem("username", data.username);
       localStorage.setItem("token_access", data.token_access);
       localStorage.setItem("token_refresh", data.token_refresh);
@@ -248,6 +271,7 @@ export default {
 
     logOut: function () {
       localStorage.clear();
+      this.is_user = false;
       alert("Sesión Cerrada");
       this.verifyAuth();
     },

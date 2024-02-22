@@ -1,53 +1,39 @@
+<!-- src/views/Portatil.vue -->
 <template>
   <div>
-    <h1>hola</h1>
-    
+    <h1>Detalles del Portátil</h1>
+    <div v-if="selectedPc">
+      <img :src="selectedPc.img" alt="Imagen pc" />
+      <h2>{{ selectedPc.marca }} - {{ selectedPc.modelo }}</h2>
+      <p>Procesador: {{ selectedPc.procesador }}</p>
+      <p>Memoria RAM: {{ selectedPc.ram }} GB</p>
+      <p>Disco Duro: SSD {{ selectedPc.rom }} GB</p>
+      <p>Precio: ${{ selectedPc.precio }}</p>
+      <!-- Agrega más detalles según sea necesario -->
+    </div>
+    <div v-else>
+      <p>No se ha seleccionado ningún portátil.</p>
+    </div>
   </div>
 </template>
 
 <script>
-export default{
-  name:"Portatil",
-  data(){
-    return{
-      
-    }
-  }
-}
-// export default {
-//   name: "Portatil",
-//   data() {
-//     return {
-//       pcId: null,
-//       pcDetails: {}, // Almacena los detalles de la computadora portátil
-//       // Otras propiedades para detalles de la computadora portátil
-//     };
-//   },
-//   mounted() {
-//     // Recupera el id de la ruta actual
-//     this.pcId = this.$route.params.id;
-
-//     // Ahora, puedes cargar los detalles de la computadora portátil utilizando this.pcId
-//     // Ejemplo: Llama a una función que carga detalles desde tu servicio
-//     this.loadPcDetails();
-//   },
-//   methods: {
-//     loadPcDetails() {
-//       // Aquí deberías llamar a un servicio para obtener los detalles de la computadora portátil
-//       // Simularemos un servicio con una llamada asíncrona
-//       setTimeout(() => {
-//         // Supongamos que los detalles se cargan con éxito desde el servicio
-//         this.pcDetails = {
-//           name: "Nombre de la computadora portátil",
-//           processor: "Intel Core i5",
-//           ram: "8GB",
-//           // Agrega más propiedades según tus necesidades
-//         };
-//       }, 1000); // Simulamos un tiempo de carga de 1 segundo
-//     },
-//   },
-// };
+export default {
+  computed: {
+    selectedPc() {
+      return this.$store.state.selectedPc; // Obtener el PC seleccionado del store
+    },
+  },
+};
 </script>
 
-
-<style></style>
+// export default {
+//   data() {
+//     return {
+//       pc: null,
+//     };
+//   },
+//   created() {
+//     // Acceder al objeto pc de los parámetros de la ruta
+//     this.pc = this.$route.params.pc;
+//   },

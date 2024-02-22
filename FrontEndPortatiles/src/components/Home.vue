@@ -171,13 +171,91 @@
       </li>
     </ul>
   </div>
+
+  <div class="container-fluid contenedor-general"
+    id="card-auto"
+    style="width: 100%">
+    <div id="app">
+    <div v-for="pc in pc_portatiles" :key="pc.id" class="card-container">
+      <div class="card my-3 mx-3">
+        <div class="row g-0" id="contenedor-card">
+          <div class="col-md-4">
+            <div class="container" id="contenedor-img">
+              <img :src="pc.img" class="img-fluid" alt="Imagen pc" />
+            </div>
+          </div>
+          <div class="col-md-8" id="contenedor-info">
+            <div class="card-body">
+              <div class="row">
+                <h5 class="card-title" id="nombre-pc">
+                  Computador Portátil {{ pc.marca }} - {{ pc.pantalla }}"
+                  {{ pc.modelo }} - {{ pc.procesador }} - {{ pc.ram }}GB - Disco
+                  SSD{{ pc.rom }}GB - {{ pc.color }}.
+                </h5>
+              </div>
+              <div class="row" id="marca">
+                <p>
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    disabled
+                  >
+                    {{ pc.marca }}
+                  </button>
+                </p>
+              </div>
+              <div class="row" id="datos-pc">
+                <div class="col-4" id="procesador">
+                  <h6>Procesador</h6>
+                  <p>{{ pc.procesador }}</p>
+                </div>
+                <div class="col-4" id="ram">
+                  <h6>Memoria RAM</h6>
+                  <p>{{ pc.ram }} GB</p>
+                </div>
+                <div class="col-4" id="rom">
+                  <h6>Disco Duro</h6>
+                  <p>Disco SSD {{ pc.rom }}GB</p>
+                </div>
+                <div class="row">
+                  <div class="col-6" id="precio">
+                    <h6>Precio</h6>
+                    <p>$ {{ pc.precio }}</p>
+                  </div>
+                  <div
+                    class="col align-self-center offset-md-2 text-end"
+                    id="detalle"
+                  >
+                    <p class="invisible" id="idPc">{{ pc.id }}</p>
+                    <h6>
+                      <a
+                        @click.prevent="processPortatil(pc)"
+                        class="verDetalles"
+                        href="#"
+                      >
+                        ver más detalles
+                      </a>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  
+
   <!-- <div
     class="container-fluid contenedor-general"
     id="card-auto"
     style="width: 100%"
   ></div> -->
-  
-  <div class="container-fluid contenedor-general" style="width: 100%">    
+
+  <!-- <div class="container-fluid contenedor-general" style="width: 100%">    
     <div class="card my-3 mx-3">
       <div class="row g-0" id="contenedor-card">
         <div class="col-md-4">
@@ -237,8 +315,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- <div class="card my-3 mx-3">
+    </div> -->
+  <!-- <div class="card my-3 mx-3">
       <div class="row g-0">
         <div class="col-md-4">
           <div class="container">
@@ -352,13 +430,18 @@
         </div>
       </div>
     </div> -->
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
 import axios from "axios";
 
-const pc_portatiles = [
+export default {
+  emits: ["completedSignUp", "completedLogIn", "logOut", "loadPortatil", "loadNewPc"],
+  name: "Home",
+  data() {
+    return {
+      pc_portatiles : [
   {
     id: 1,
     marca: "LENOVO",
@@ -398,13 +481,7 @@ const pc_portatiles = [
     color: "Gris",
     resumen: "",
   },
-];
-
-export default {
-  emits: ['completedSignUp', 'completedLogIn', 'logOut','loadPortatil'],
-  name: "Home",
-  data() {
-    return {
+],
       // fields: [
       //   "referencia",
       //   "nombre",
@@ -446,96 +523,91 @@ export default {
   },
 
   methods: {
-    // createPcElement(pc) {
-    //   const pcElement = document.createElement("div");
-    //   pcElement.classList.add("card-container");
-    //   pcElement.innerHTML = `
-    // <div class= "card my-3 mx-3">
-    // <div class="row g-0" id="contenedor-card">
-    //     <div class="col-md-4">
-    //       <div class="container" id="contenedor-img">
-    //         <img
-    //           src="${pc.img}"
-    //           class="img-fluid"
-    //           alt="Imagen pc"
-    //         />
-    //       </div>
-    //     </div>
-    //     <div class="col-md-8" id="contenedor-info">
-    //       <div class="card-body">
-    //         <div class="row">
-    //           <h5 class="card-title" id="nombre-pc">
-    //             Computador Portátil ${pc.marca} - ${pc.pantalla}" ${pc.modelo} - ${pc.procesador} - ${pc.ram}GB - Disco SSD${pc.rom}GB - ${pc.color}.
-    //           </h5>
-    //         </div>
-    //         <div class="row" id="marca">
-    //           <p>
-    //             <button
-    //               type="button"
-    //               class="btn btn-outline-secondary"
-    //               disabled
-    //             >
-    //               ${pc.marca}
-    //             </button>
-    //           </p>
-    //         </div>
-    //         <div class="row" id="datos-pc">
-    //           <div class="col-4" id="procesador">
-    //             <h6>Procesadr</h6>
-    //             <p>${pc.procesador}</p>
-    //           </div>
-    //           <div class="col-4" id="ram">
-    //             <h6>Memoria RAM</h6>
-    //             <p>${pc.ram} GB</p>
-    //           </div>
-    //           <div class="col-4" id="rom">
-    //             <h6>Disco Duro</h6>
-    //             <p>Disco SSD ${pc.rom}GB</p>
-    //           </div>
-    //           <div class="row">
-    //             <div class="col-6" id="precio">
-    //               <h6>Precio</h6>
-    //               <p>$ ${pc.precio}</p>
-    //             </div>
-    //             <div
-    //               class="col align-self-center offset-md-2 text-end"
-    //               id="detalle"
-    //             >
-    //               <p class="invisible" id="idPc">${pc.id}</p>
-    //               <h6><a @:click="proccesPortatil" class="verDetalles" href="#">ver más detalles</a>                </h6>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-    // `;
-    //   // pcElement
-    //   //   .querySelector(".detalle-pc")
-    //   //   .addEventListener("click", function () {
-    //   //     showModal(pc);
-    //   //   });
-    //   return pcElement;
-    // },
+    createPcElement(pc) {
+      const pcElement = document.createElement("div");
+      pcElement.classList.add("card-container");
+      pcElement.innerHTML = `
+    <div class= "card my-3 mx-3">
+    <div class="row g-0" id="contenedor-card">
+        <div class="col-md-4">
+          <div class="container" id="contenedor-img">
+            <img
+              src="${pc.img}"
+              class="img-fluid"
+              alt="Imagen pc"
+            />
+          </div>
+        </div>
+        <div class="col-md-8" id="contenedor-info">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title" id="nombre-pc">
+                Computador Portátil ${pc.marca} - ${pc.pantalla}" ${pc.modelo} - ${pc.procesador} - ${pc.ram}GB - Disco SSD${pc.rom}GB - ${pc.color}.
+              </h5>
+            </div>
+            <div class="row" id="marca">
+              <p>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  disabled
+                >
+                  ${pc.marca}
+                </button>
+              </p>
+            </div>
+            <div class="row" id="datos-pc">
+              <div class="col-4" id="procesador">
+                <h6>Procesadr</h6>
+                <p>${pc.procesador}</p>
+              </div>
+              <div class="col-4" id="ram">
+                <h6>Memoria RAM</h6>
+                <p>${pc.ram} GB</p>
+              </div>
+              <div class="col-4" id="rom">
+                <h6>Disco Duro</h6>
+                <p>Disco SSD ${pc.rom}GB</p>
+              </div>
+              <div class="row">
+                <div class="col-6" id="precio">
+                  <h6>Precio</h6>
+                  <p>$ ${pc.precio}</p>
+                </div>
+                <div
+                  class="col align-self-center offset-md-2 text-end"
+                  id="detalle"
+                >
+                  <p class="invisible" id="idPc">${pc.id}</p>
+                  <h6><a v-on:click.prevent="processPortatil" class="verDetalles" href="#">ver más detalles</a>                </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+      return pcElement;
+    },
 
-    // loadPopularPc() {
-    //   try {
-    //     const lista = pc_portatiles;
-    //     const pcContainer = document.querySelector("#card-auto");
-    //     pcContainer.innerHTML = ""; // Limpiar el contenedor para nuevas tarjetas
-    //     lista.forEach((pc) => {
-    //       const pcElement = this.createPcElement(pc);
-    //       pcContainer.appendChild(pcElement);
-    //     });
-    //   } catch (error) {
-    //     console.error("Error al mostrar las películas:", error);
-    //   }
-    // },
-    
+    loadPopularPc() {
+      try {
+        const lista = pc_portatiles;
+        const pcContainer = document.querySelector("#card-auto");
+        pcContainer.innerHTML = ""; // Limpiar el contenedor para nuevas tarjetas
+        lista.forEach((pc) => {
+          const pcElement = this.createPcElement(pc);
+          pcContainer.appendChild(pcElement);
+        });
+      } catch (error) {
+        console.error("Error al mostrar las películas:", error);
+      }
+    },
 
-    processPortatil: function () {
-      this.$emit("loadPortatil");
+    processPortatil(pc) {
+      this.$store.commit('setSelectedPc', pc);
+      this.$emit("loadPortatil",pc);
     },
   },
 
@@ -562,10 +634,8 @@ export default {
   //       });
   //   },
   // },
-  
-  created: async function () {
-    
-  },
+
+  created: async function () {},
 };
 </script>
 
