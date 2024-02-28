@@ -4,7 +4,7 @@
     <div class="row g-0" id="contenedor-card">
       <div class="col-md-4">
         <div class="container" id="contenedor-img">
-          <img :src="selectedPc.img" alt="Imagen pc" class="img-fluid" />
+          <img :src="getMediaUrl(selectedPc.imagen)" alt="Imagen pc" class="img-fluid" />
         </div>
       </div>
       <div class="col-md-8" id="contenedor-info">
@@ -97,6 +97,10 @@ export default {
     updatePc(pc) {
       this.$store.commit("setSelectedPc", pc);
       this.$emit("loadPortatil", pc);
+    },
+    getMediaUrl(filename) {
+        // Combina la URL base de media con el nombre del archivo
+        return `http://127.0.0.1:8000/${filename}`;
     },
   },
 };

@@ -328,7 +328,7 @@ export default {
 
     getMediaUrl(filename) {
         // Combina la URL base de media con el nombre del archivo
-        return `${filename}`;
+        return `http://127.0.0.1:8000/${filename}`;
     },
 
   },
