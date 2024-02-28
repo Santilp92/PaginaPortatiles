@@ -21,3 +21,9 @@ class UserDetailView(generics.RetrieveAPIView):
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
     
         return super().get(request, *args, **kwargs)
+    
+    def delete(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        
+        return Response(status=status.HTTP_204_NO_CONTENT)

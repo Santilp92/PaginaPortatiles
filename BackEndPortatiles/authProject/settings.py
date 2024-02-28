@@ -29,18 +29,13 @@ SECRET_KEY = 'django-insecure-greq0t5ot0cl4^pv@@tv%-x&mmz_q-lkzmgf6zse1mk_&197cf
 DEBUG = True
 
 ALLOWED_HOSTS = []
-CORS_ALLOW_ALL_ORIGINS = True
-
-CORS_ALLOWED_ORIGINS = [
-    "https://example.com",
-    "http://localhost:8080",
-    "http://127.0.0.1:8000",
-    "http://127.0.0.1:9000",
-]
+# CORS_ALLOW_ALL_ORIGINS = True
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 
 
 # Application definition
@@ -77,6 +72,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:9000",
 ]
 
 REST_FRAMEWORK = {
@@ -167,6 +169,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

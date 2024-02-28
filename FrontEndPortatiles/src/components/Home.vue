@@ -176,12 +176,12 @@
     id="card-auto"
     style="width: 100%">
     <div id="app">
-    <div v-for="pc in pc_portatiles" :key="pc.id" class="card-container">
+    <div v-for="pc in listaPc" :key="pc.id" class="card-container">
       <div class="card my-3 mx-3">
         <div class="row g-0" id="contenedor-card">
           <div class="col-md-4">
             <div class="container" id="contenedor-img">
-              <img :src="pc.img" class="img-fluid" alt="Imagen pc" />
+              <img :src="getMediaUrl(pc.imagen)" class="img-fluid" alt="Imagen pc" />
             </div>
           </div>
           <div class="col-md-8" id="contenedor-info">
@@ -247,201 +247,19 @@
   </div>
 
   </div>
-  
 
-  <!-- <div
-    class="container-fluid contenedor-general"
-    id="card-auto"
-    style="width: 100%"
-  ></div> -->
-
-  <!-- <div class="container-fluid contenedor-general" style="width: 100%">    
-    <div class="card my-3 mx-3">
-      <div class="row g-0" id="contenedor-card">
-        <div class="col-md-4">
-          <div class="container" id="contenedor-img">
-            <img
-              src="https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI"
-              class="img-fluid"
-              alt="Imagen pc"
-            />
-          </div>
-        </div>
-        <div class="col-md-8" id="contenedor-info">
-          <div class="card-body">
-            <div class="row">
-              <h5 class="card-title" id="nombre-pc">
-                Computador Portátil LENOVO 15,6" Pulgadas IdeaPad Slim 3 Táctil
-                - Intel Core i5 - RAM 8GB - Disco SSD 512GB - Gris
-              </h5>
-            </div>
-            <div class="row" id="marca">
-              <p>
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  disabled
-                >
-                  LENOVO
-                </button>
-              </p>
-            </div>
-            <div class="row" id="datos-pc">
-              <div class="col-4" id="procesador">
-                <h6>Procesador</h6>
-                <p>Intel Core i5</p>
-              </div>
-              <div class="col-4" id="ram">
-                <h6>Memoria RAM</h6>
-                <p>8 GB</p>
-              </div>
-              <div class="col-4" id="rom">
-                <h6>Disco Duro</h6>
-                <p>Disco SSD 512GB</p>
-              </div>
-              <div class="row">
-                <div class="col-6" id="precio">
-                  <h6>Precio</h6>
-                  <p>$2,099,000</p>
-                </div>
-                <div
-                  class="col align-self-center offset-md-2 text-end"
-                  id="detalle"
-                >
-                  <h6><a v-on:click.prevent="processPortatil" href="">ver más detalles</a></h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-  <!-- <div class="card my-3 mx-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <div class="container">
-            <img
-              src="https://www.ktronix.com/medias/4711387355954-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wxMzUzNzR8aW1hZ2Uvd2VicHxhR015TDJnd1pTOHhOREV6TVRBME5qRTROekF6T0M4ME56RXhNemczTXpVMU9UVTBYekF3TVY4M05UQlhlRGMxTUVnfGQ0ODM3ZmQwNWYyMWNjMmIwZDAxMmVlOWVlOTcyMDAzMjdjZDk3NGUyZWE4ZDkyYzE2ZWMxYjRjMzgzODcxYTc"
-              class="img-fluid"
-              alt="Imagen pc"
-            />
-          </div>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <div class="row">
-              <h5 class="card-title">
-                Computador Portátil ASUS Vivobook Go OLED 15.6" Pulgadas E1504FA
-                - AMD Ryzen 5 - RAM 16GB - Disco SSD 512 GB - Negro
-              </h5>
-            </div>
-            <div class="row">
-              <p>
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  disabled
-                >
-                  AUSUS
-                </button>
-              </p>
-            </div>
-            <div class="row">
-              <div class="col-4">
-                <h6>Procesador</h6>
-                <p>AMD Ryzen 5</p>
-              </div>
-              <div class="col-4">
-                <h6>Memoria RAM</h6>
-                <p>16 GB</p>
-              </div>
-              <div class="col-4">
-                <h6>Disco Duro</h6>
-                <p>Disco SSD 512GB</p>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <h6>Precio</h6>
-                  <p>$2,349,000</p>
-                </div>
-                <div class="col align-self-center offset-md-2 text-end">
-                  <h6><a href="">ver más detalles</a></h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card my-3 mx-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <div class="container">
-            <img
-              src="https://www.ktronix.com/medias/197498374697-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wxNTQ3NjR8aW1hZ2Uvd2VicHxhREl3TDJnMllTOHhOREEzT1RVM01qUTBNekUyTmk4eE9UYzBPVGd6TnpRMk9UZGZNREF4WHpjMU1GZDROelV3U0F8NDFkY2VkN2UxY2UyMmE0M2YzNzRjMzBkZWE1MDAzN2YzZWQ0Y2E5OWMzM2M2YTE5NWFjNmQyMTVmM2M5MzA4MA"
-              class="img-fluid"
-              alt="Imagen pc"
-            />
-          </div>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <div class="row">
-              <h5 class="card-title">
-                Computador Portátil HP 14" Pulgadas Dq5005la INTEL Core i5 - RAM
-                12GB - Disco SSD 512GB - Plata
-              </h5>
-            </div>
-            <div class="row">
-              <p>
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  disabled
-                >
-                  HP
-                </button>
-              </p>
-            </div>
-            <div class="row">
-              <div class="col-4">
-                <h6>Procesador</h6>
-                <p>Intel Core i5</p>
-              </div>
-              <div class="col-4">
-                <h6>Memoria RAM</h6>
-                <p>12 GB</p>
-              </div>
-              <div class="col-4">
-                <h6>Disco Duro</h6>
-                <p>Disco SSD 512GB</p>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <h6>Precio</h6>
-                  <p>$2,099,000</p>
-                </div>
-                <div class="col align-self-center offset-md-2 text-end">
-                  <h6><a href="">ver más detalles</a></h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-  <!-- </div> -->
 </template>
 
 <script>
 import axios from "axios";
 
 export default {
-  emits: ["completedSignUp", "completedLogIn", "logOut", "loadPortatil", "loadNewPc"],
+  emits: ["completedSignUp", "completedLogIn", "logOut", "loadPortatil", "loadNewPc",],
   name: "Home",
   data() {
     return {
-      pc_portatiles : [
+      listaPc: [],
+      pc_portati : [
   {
     id: 1,
     marca: "LENOVO",
@@ -482,133 +300,37 @@ export default {
     resumen: "",
   },
 ],
-      // fields: [
-      //   "referencia",
-      //   "nombre",
-      //   "marca",
-      //   "tamaño",
-      //   "procesador",
-      //   "ram",
-      //   "rom",
-      //   "precio",
-      // ],
-      // username: localStorage.getItem("username") || "none",
-      // referencia: "",
-      // nombre: "",
-      // marca: "",
-      // tamaño: "",
-      // procesador: "",
-      // ram: "",
-      // rom: "",
-      // precio: "",
-      // listarDatos: [],
     };
   },
 
   mounted() {
-    // this.loadPopularPc();
 
-    // axios
-    //   .get("http://127.0.0.1:8000/lista/")
-    //   .then((response) => {
-    //     this.listarDatos = response.data;
-    //     console.log(this.listarDatos);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   })
-    //   .finally(function () {
-    //     //se ejecuta sin problemas
-    //   });
+    axios.get("http://127.0.0.1:8000/lista/")
+      .then((response) => {
+        this.listaPc = response.data;
+        // console.log(this.listaPc);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        //se ejecuta sin problemas
+      });
   },
 
   methods: {
-    createPcElement(pc) {
-      const pcElement = document.createElement("div");
-      pcElement.classList.add("card-container");
-      pcElement.innerHTML = `
-    <div class= "card my-3 mx-3">
-    <div class="row g-0" id="contenedor-card">
-        <div class="col-md-4">
-          <div class="container" id="contenedor-img">
-            <img
-              src="${pc.img}"
-              class="img-fluid"
-              alt="Imagen pc"
-            />
-          </div>
-        </div>
-        <div class="col-md-8" id="contenedor-info">
-          <div class="card-body">
-            <div class="row">
-              <h5 class="card-title" id="nombre-pc">
-                Computador Portátil ${pc.marca} - ${pc.pantalla}" ${pc.modelo} - ${pc.procesador} - ${pc.ram}GB - Disco SSD${pc.rom}GB - ${pc.color}.
-              </h5>
-            </div>
-            <div class="row" id="marca">
-              <p>
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  disabled
-                >
-                  ${pc.marca}
-                </button>
-              </p>
-            </div>
-            <div class="row" id="datos-pc">
-              <div class="col-4" id="procesador">
-                <h6>Procesadr</h6>
-                <p>${pc.procesador}</p>
-              </div>
-              <div class="col-4" id="ram">
-                <h6>Memoria RAM</h6>
-                <p>${pc.ram} GB</p>
-              </div>
-              <div class="col-4" id="rom">
-                <h6>Disco Duro</h6>
-                <p>Disco SSD ${pc.rom}GB</p>
-              </div>
-              <div class="row">
-                <div class="col-6" id="precio">
-                  <h6>Precio</h6>
-                  <p>$ ${pc.precio}</p>
-                </div>
-                <div
-                  class="col align-self-center offset-md-2 text-end"
-                  id="detalle"
-                >
-                  <p class="invisible" id="idPc">${pc.id}</p>
-                  <h6><a v-on:click.prevent="processPortatil" class="verDetalles" href="#">ver más detalles</a>                </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    `;
-      return pcElement;
-    },
-
-    loadPopularPc() {
-      try {
-        const lista = pc_portatiles;
-        const pcContainer = document.querySelector("#card-auto");
-        pcContainer.innerHTML = ""; // Limpiar el contenedor para nuevas tarjetas
-        lista.forEach((pc) => {
-          const pcElement = this.createPcElement(pc);
-          pcContainer.appendChild(pcElement);
-        });
-      } catch (error) {
-        console.error("Error al mostrar las películas:", error);
-      }
-    },
 
     processPortatil(pc) {
       this.$store.commit('setSelectedPc', pc);
       this.$emit("loadPortatil",pc);
+      console.log(pc.imagen);
     },
+
+    getMediaUrl(filename) {
+        // Combina la URL base de media con el nombre del archivo
+        return `${filename}`;
+    },
+
   },
 
   //Metodo para solicitar la información de un solo pc

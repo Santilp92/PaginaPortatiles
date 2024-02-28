@@ -215,6 +215,7 @@ export default {
 
   methods: {
     verifyAuth: function () {
+      this.$store.commit('setIsAuth', this.isAuth);
       if (this.isAuth) {                                                           
         this.$router.push({ name: 'user-home' });
       }
@@ -226,9 +227,11 @@ export default {
     loadLogIn: function () {
       this.$router.push({ name: "logIn" });
     },
+
     loadSignUp: function () {
       this.$router.push({ name: "signUp" });
     },
+
     loadHome: function () {
       if (this.isAuth){
         this.$router.push({ name: 'user-home' });
@@ -237,12 +240,18 @@ export default {
         this.$router.push({ name: "home" });
       }
     },
+    
     loadAccount: function () {
       this.$router.push({ name: "account" });
     },
 
     loadPortatil: function (pc) {
-      this.$router.push({ name: "portatil" });
+      if(this.isAuth){
+        this.$router.push({ name: "user-portatil" });
+      }
+      else{
+        this.$router.push({ name: "portatil" });
+      }
     },
 
     loadNewPc: function () {

@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 from authApp import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 
 urlpatterns = [
     path('login/', TokenObtainPairView.as_view()),
@@ -29,6 +33,6 @@ urlpatterns = [
     path('lista/',views.ListaDetailView.as_view())
 ]
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-# ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

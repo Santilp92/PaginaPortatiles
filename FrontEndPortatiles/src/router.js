@@ -2,10 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import LogIn from "./components/LogIn.vue";
 import SignUp from "./components/SignUp.vue";
-import Home from './components/Home.vue'
-import Account from './components/Account.vue'
-import Portatil from './components/Portatil.vue'
-import NewPc from './components/NewPc.vue'
+import Home from "./components/Home.vue";
+import Account from "./components/Account.vue";
+import Portatil from "./components/Portatil.vue";
+import NewPc from "./components/NewPc.vue";
 
 
 const routes = [
@@ -31,7 +31,7 @@ const routes = [
   },
   {
     path: '/user/home',
-    name: 'user-home',
+    name: "user-home",
     component: Home,
     meta: { requiresAuth: true }, 
   },
@@ -46,11 +46,16 @@ const routes = [
     component: Portatil
   },
   {
+    path: '/user/portatil',
+    name: "user-portatil",
+    component: Portatil,
+    meta: { requiresAuth: true }, 
+  },
+  {
     path: '/user/newpc',
     name: "newPc",
     component: NewPc
   },
-
 ];
 
 

@@ -8,7 +8,7 @@ from authApp.serializers.portatilSerializer import PortatilSerializer
 class ListaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lista
-        fields = ['id', 'modelo']
+        fields = ['id', 'equipo']
 
 
     def create(self, validated_data):
@@ -23,13 +23,17 @@ class ListaSerializer(serializers.ModelSerializer):
         lista = Lista.objects.get(list=obj.id)
         return {
                 'id': lista.id,
-                'modelo': {
-                    'nombre': portatil.nombre, 
-                    'marca': portatil.marca,
+                'equipo': {
+                    'id':portatil.id,
+                    'modelo': portatil.modelo,
+                    'marca': portatil.marca, 
+                    'fechaLanzamiento': portatil.fechaLanzamiento,
                     'tamaño':portatil.tamaño,
                     'precio':portatil.precio,
                     'procesador':portatil.procesador,
                     'ram':portatil.ram,
-                    'rom': portatil.rom,                   
+                    'rom': portatil.rom,
+                    'color': portatil.color,
+                    'imagen':portatil.imagen,                   
                     }
                 }
