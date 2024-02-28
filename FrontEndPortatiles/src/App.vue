@@ -106,6 +106,7 @@
         v-on:logOut="logOut"
         v-on:loadPortatil="loadPortatil"
         v-on:loadNewPc="loadNewPc"
+        v-on:loadHome = "loadHome"
       ></router-view>
     </div>
 

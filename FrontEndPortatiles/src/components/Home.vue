@@ -172,70 +172,77 @@
     </ul>
   </div>
 
-  <div class="container-fluid contenedor-general"
+  <div
+    class="container-fluid contenedor-general"
     id="card-auto"
-    style="width: 100%">
+    style="width: 100%"
+  >
     <div id="app">
-    <div v-for="pc in listaPc" :key="pc.id" class="card-container">
-      <div class="card my-3 mx-3">
-        <div class="row g-0" id="contenedor-card">
-          <div class="col-md-4">
-            <div class="container" id="contenedor-img">
-              <img :src="getMediaUrl(pc.imagen)" class="img-fluid" alt="Imagen pc" />
+      <div v-for="pc in listaPc" :key="pc.id" class="card-container">
+        <div class="card my-3 mx-3">
+          <div class="row g-0" id="contenedor-card">
+            <div class="col-md-4">
+              <div class="container" id="contenedor-img">
+                <img
+                  :src="getMediaUrl(pc.imagen)"
+                  class="img-fluid"
+                  alt="Imagen pc"
+                />
+              </div>
             </div>
-          </div>
-          <div class="col-md-8" id="contenedor-info">
-            <div class="card-body">
-              <div class="row">
-                <h5 class="card-title" id="nombre-pc">
-                  Computador Portátil {{ pc.marca }} - {{ pc.pantalla }}"
-                  {{ pc.modelo }} - {{ pc.procesador }} - {{ pc.ram }}GB - Disco
-                  SSD{{ pc.rom }}GB - {{ pc.color }}.
-                </h5>
-              </div>
-              <div class="row" id="marca">
-                <p>
-                  <button
-                    type="button"
-                    class="btn btn-outline-secondary"
-                    disabled
-                  >
-                    {{ pc.marca }}
-                  </button>
-                </p>
-              </div>
-              <div class="row" id="datos-pc">
-                <div class="col-4" id="procesador">
-                  <h6>Procesador</h6>
-                  <p>{{ pc.procesador }}</p>
-                </div>
-                <div class="col-4" id="ram">
-                  <h6>Memoria RAM</h6>
-                  <p>{{ pc.ram }} GB</p>
-                </div>
-                <div class="col-4" id="rom">
-                  <h6>Disco Duro</h6>
-                  <p>Disco SSD {{ pc.rom }}GB</p>
-                </div>
+            <div class="col-md-8" id="contenedor-info">
+              <div class="card-body">
                 <div class="row">
-                  <div class="col-6" id="precio">
-                    <h6>Precio</h6>
-                    <p>$ {{ pc.precio }}</p>
+                  <h5 class="card-title" id="nombre-pc">
+                    Computador Portátil {{ pc.marca }} - {{ pc.pantalla }}"
+                    {{ pc.modelo }} - {{ pc.procesador }} - {{ pc.ram }}GB -
+                    Disco SSD{{ pc.rom }}GB - {{ pc.color }}.
+                  </h5>
+                </div>
+                <div class="row" id="marca">
+                  <p>
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      disabled
+                    >
+                      {{ pc.marca }}
+                    </button>
+                  </p>
+                </div>
+                <div class="row" id="datos-pc">
+                  <div class="col-4" id="procesador">
+                    <h6>Procesador</h6>
+                    <p>{{ pc.procesador }}</p>
                   </div>
-                  <div
-                    class="col align-self-center offset-md-2 text-end"
-                    id="detalle"
-                  >
-                    <p class="invisible" id="idPc">{{ pc.id }}</p>
-                    <h6>
-                      <a
-                        @click.prevent="processPortatil(pc)"
-                        class="verDetalles"
-                        href="#"
-                      >
-                        ver más detalles
-                      </a>
-                    </h6>
+                  <div class="col-4" id="ram">
+                    <h6>Memoria RAM</h6>
+                    <p>{{ pc.ram }} GB</p>
+                  </div>
+                  <div class="col-4" id="rom">
+                    <h6>Disco Duro</h6>
+                    <p>Disco SSD {{ pc.rom }}GB</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-6" id="precio">
+                      <h6>Precio</h6>
+                      <p>$ {{ pc.precio }}</p>
+                    </div>
+                    <div
+                      class="col align-self-center offset-md-2 text-end"
+                      id="detalle"
+                    >
+                      <p class="invisible" id="idPc">{{ pc.id }}</p>
+                      <h6>
+                        <a
+                          @click.prevent="processPortatil(pc)"
+                          class="verDetalles"
+                          href="#"
+                        >
+                          ver más detalles
+                        </a>
+                      </h6>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -245,92 +252,48 @@
       </div>
     </div>
   </div>
-
-  </div>
-
 </template>
 
 <script>
 import axios from "axios";
 
 export default {
-  emits: ["completedSignUp", "completedLogIn", "logOut", "loadPortatil", "loadNewPc",],
+  emits: [
+    "completedSignUp",
+    "completedLogIn",
+    "logOut",
+    "loadPortatil",
+    "loadNewPc",
+    "loadHome"
+  ],
   name: "Home",
   data() {
     return {
       listaPc: [],
-      pc_portati : [
-  {
-    id: 1,
-    marca: "LENOVO",
-    modelo: "IdeaPad Slim 3 Tactil",
-    pantalla: 15.6,
-    procesador: "Intel Core i7",
-    img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
-    precio: 2099000,
-    ram: 8,
-    rom: 512,
-    color: "Gris",
-    resumen: "",
-  },
-  {
-    id: 2,
-    marca: "HP",
-    modelo: "IdeaPad Slim 3 Tactil",
-    pantalla: 15.6,
-    procesador: "Intel Core i7",
-    img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
-    precio: 2099000,
-    ram: 8,
-    rom: 512,
-    color: "Gris",
-    resumen: "",
-  },
-  {
-    id: 3,
-    marca: "ASUS",
-    modelo: "IdeaPad Slim 3 Tactil",
-    pantalla: 15.6,
-    procesador: "Intel Core i7",
-    img: "https://www.ktronix.com/medias/750Wx750H-master-hotfolder-transfer-incoming-deposit-hybris-interfaces-IN-media-product-197532261341-001.jpg?context=bWFzdGVyfGltYWdlc3wxNTYwNTd8aW1hZ2UvanBlZ3xhRFV3TDJnd1pDOHhOREF3Tmprek56Z3hNekF5TWk4M05UQlhlRGMxTUVoZmJXRnpkR1Z5TDJodmRHWnZiR1JsY2k5MGNtRnVjMlpsY2k5cGJtTnZiV2x1Wnk5a1pYQnZjMmwwTDJoNVluSnBjeTFwYm5SbGNtWmhZMlZ6TDBsT0wyMWxaR2xoTDNCeWIyUjFZM1F2TVRrM05UTXlNall4TXpReFh6QXdNUzVxY0djfDNiNDY5MTViNzExNDFiMTg5YzFiMzYyMTgzNzcwMGFjMzhkYmJmZmU4YzJhODg4YmFkNDc0NjlkY2JjMzQ3OTI",
-    precio: 2099000,
-    ram: 8,
-    rom: 512,
-    color: "Gris",
-    resumen: "",
-  },
-],
     };
   },
 
   mounted() {
-
-    axios.get("http://127.0.0.1:8000/lista/")
+    axios
+      .get("http://127.0.0.1:8000/lista/")
       .then((response) => {
         this.listaPc = response.data;
-        // console.log(this.listaPc);
       })
       .catch(function (error) {
         console.log(error);
       })
-      .finally(function () {
-        //se ejecuta sin problemas
-      });
+      .finally(function () {});
   },
 
   methods: {
-
     processPortatil(pc) {
-      this.$store.commit('setSelectedPc', pc);
-      this.$emit("loadPortatil",pc);
-      console.log(pc.imagen);
+      this.$store.commit("setSelectedPc", pc);
+      this.$emit("loadPortatil", pc);
     },
 
     getMediaUrl(filename) {
-        // Combina la URL base de media con el nombre del archivo
-        return `http://127.0.0.1:8000/${filename}`;
+      return `http://127.0.0.1:8000/${filename}`;
     },
-
   },
 
   //Metodo para solicitar la información de un solo pc
@@ -356,7 +319,6 @@ export default {
   //       });
   //   },
   // },
-
 };
 </script>
 
@@ -364,7 +326,6 @@ export default {
 .contenedor-general {
   overflow: auto;
 }
-
 
 /* bootstrap */
 

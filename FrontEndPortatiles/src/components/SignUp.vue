@@ -3,9 +3,9 @@
     <div class="container_signUp_user">
       <h2>Registrarse</h2>
       <form v-on:submit.prevent="processSignUp">
-        <input type="text" v-model="user.username" placeholder="Username" />
+        <input type="text" v-model="user.username" placeholder="Username" autocomplete="current-user" />
         <br />
-        <input type="password" v-model="user.password" placeholder="Password" />
+        <input type="password" v-model="user.password" placeholder="Password" autocomplete="current-password"/>
         <br />
         <input type="text" v-model="user.name" placeholder="Name" />
         <br />
