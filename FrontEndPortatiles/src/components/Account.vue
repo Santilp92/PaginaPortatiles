@@ -38,7 +38,6 @@ export default {
       let token = localStorage.getItem("token_access");
       let decodeToken = JSON.parse(atob(token.split(".")[1]));
       let userId = decodeToken.user_id;
-      console.log(userId)
 
       axios
         .get(`http://127.0.0.1:8000/user/${userId}/`, {

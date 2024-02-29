@@ -218,16 +218,6 @@ export default {
 };
 </script>
 
-// async crearPortatil() { // try { // // Realizar la solicitud POST con Axios
-// const response = await axios.post( // "http://127.0.0.1:8000/nuevoPortatil/",
-// this.portatil // ); // // Verificar si la respuesta fue exitosa // if
-(response.status === 201) { // alert("Portátil creado exitosamente"); // //
-Limpiar los campos del formulario // this.portatil = { // id: null, // modelo:
-"", // marca: "", // fechaLanzamiento: null, // tamaño: 0, // precio: 0, //
-procesador: "", // ram: 0, // rom: 0, // color: "", // imagen: "", // }; // }
-else { // alert("Error al crear el portátil"); // } // } catch (error) { // //
-Manejar errores de la solicitud // alert(`Error: ${error.message}`); // } // },
-
 <style>
 .contenedor-general {
   overflow: auto;

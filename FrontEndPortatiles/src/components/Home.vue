@@ -192,8 +192,8 @@
             </div>
             <div class="col-md-8" id="contenedor-info">
               <div class="card-body">
-                <div class="row">
-                  <h5 class="card-title" id="nombre-pc">
+                <div class="row" id="nombre-pc">
+                  <h5 class="card-title">
                     Computador Portátil {{ pc.marca }} - {{ pc.pantalla }}"
                     {{ pc.modelo }} - {{ pc.procesador }} - {{ pc.ram }}GB -
                     Disco SSD{{ pc.rom }}GB - {{ pc.color }}.
@@ -224,7 +224,7 @@
                     <p>Disco SSD {{ pc.rom }}GB</p>
                   </div>
                   <div class="row">
-                    <div class="col-6" id="precio">
+                    <div class="col" id="precio">
                       <h6>Precio</h6>
                       <p>$ {{ pc.precio }}</p>
                     </div>
@@ -233,7 +233,7 @@
                       id="detalle"
                     >
                       <p class="invisible" id="idPc">{{ pc.id }}</p>
-                      <h6>
+                      <h6 id="verDetalles">
                         <a
                           @click.prevent="processPortatil(pc)"
                           class="verDetalles"
@@ -258,6 +258,9 @@
 import axios from "axios";
 
 export default {
+
+  name: "Home",
+
   emits: [
     "completedSignUp",
     "completedLogIn",
@@ -266,7 +269,7 @@ export default {
     "loadNewPc",
     "loadHome"
   ],
-  name: "Home",
+  
   data() {
     return {
       listaPc: [],
@@ -295,30 +298,6 @@ export default {
       return `http://127.0.0.1:8000/${filename}`;
     },
   },
-
-  //Metodo para solicitar la información de un solo pc
-  // methods: {
-  //   getData: async function () {
-  //     let idPc = 345;
-  //     axios
-  //       .get(`http://127.0.0.1:8000/portatil/${idPc}/`)
-  //       .then((response) => {
-  //         this.nombre = response.data.nombre;
-  //         this.marca = response.data.marca;
-  //         this.tamaño = response.data.tamaño;
-  //         this.procesador = response.data.procesador;
-  //         this.ram = response.data.ram;
-  //         this.rom = response.data.rom;
-  //         this.precio = response.data.precio;
-  //         console.log(response);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //         // if (error.response.status.alert )
-  //         //   alert("ERROR 400: Error.");
-  //       });
-  //   },
-  // },
 };
 </script>
 
