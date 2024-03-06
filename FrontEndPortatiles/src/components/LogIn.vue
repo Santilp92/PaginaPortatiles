@@ -3,9 +3,19 @@
     <div class="container_logIn_user">
       <h2>Iniciar sesión</h2>
       <form v-on:submit.prevent="processLogInUser">
-        <input type="text" v-model="user.username" placeholder="Username" autocomplete="current-user"/>
+        <input
+          type="text"
+          v-model="user.username"
+          placeholder="Username"
+          autocomplete="current-user"
+        />
         <br />
-        <input type="password" v-model="user.password" placeholder="Password" autocomplete="current-password" />
+        <input
+          type="password"
+          v-model="user.password"
+          placeholder="Password"
+          autocomplete="current-password"
+        />
         <br />
         <button type="submit">Iniciar Sesion</button>
       </form>
@@ -15,8 +25,10 @@
 
 <script>
 import axios from "axios";
+
 export default {
   name: "LogIn",
+  
   data: function () {
     return {
       user: {
@@ -27,7 +39,8 @@ export default {
   },
   methods: {
     processLogInUser: function () {
-      axios.post("http://127.0.0.1:8000/login/", this.user, {headers: {},})
+      axios
+        .post("http://127.0.0.1:8000/login/", this.user, { headers: {} })
         .then((result) => {
           let dataLogIn = {
             username: this.user.username,
@@ -39,8 +52,8 @@ export default {
         .catch((error) => {
           if (error.response.status == "401")
             alert("ERROR 401: Credenciales Incorrectas.");
-            this.user.username = "";
-            this.user.password = "";
+          this.user.username = "";
+          this.user.password = "";
         });
     },
   },

@@ -99,6 +99,7 @@
         </div>
       </div>
     </header>
+    
     <div class="main-component">
       <router-view
         v-on:completedSignUp="completedSignUp"
