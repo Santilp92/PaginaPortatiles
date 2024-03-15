@@ -58,6 +58,9 @@ const routes = [
   },
 ];
 
+routes.forEach(route => {
+  console.log(`Path: ${route.path}`);
+});
 
 
 const router = createRouter({
