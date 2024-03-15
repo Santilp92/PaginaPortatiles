@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-greq0t5ot0cl4^pv@@tv%-x&mmz_q-lkzmgf6zse1mk_&197cf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['santilp92.pythonanywhere.com',]
 # CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
@@ -36,6 +36,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8000",
     "http://127.0.0.1:9000",
+    "https://santilp92.pythonanywhere.com",
 ]
 
 

@@ -263,7 +263,7 @@ export default {
 
     eliminatePc(pc) {
       axios
-        .delete(`http://127.0.0.1:8000/portatil/${pc.id}/`)
+        .delete(`https://santilp92.pythonanywhere.com/portatil/${pc.id}/`)
         .then((response) => {
           alert("Portatil Eliminado");
           this.$emit("loadHome");
@@ -275,7 +275,7 @@ export default {
 
     getMediaUrl(filename) {
       // Combina la URL base de media con el nombre del archivo
-      return `http://127.0.0.1:8000/${filename}`;
+      return `https://santilp92.pythonanywhere.com/${filename}`;
     },
 
     saveUpdatedPc() {
@@ -292,7 +292,7 @@ export default {
 
       axios
         .patch(
-          `http://127.0.0.1:8000/portatil/${this.selectedPc.id}/`,
+          `https://santilp92.pythonanywhere.com/portatil/${this.selectedPc.id}/`,
           updatedPc
         )
         .then((response) => {})
@@ -309,7 +309,7 @@ export default {
 //   getData: async function () {
 //     let idPc = 345;
 //     axios
-//       .get(`http://127.0.0.1:8000/portatil/${idPc}/`)
+//       .get(`https://santilp92.pythonanywhere.com/portatil/${idPc}/`)
 //       .then((response) => {
 //         this.nombre = response.data.nombre;
 //         this.marca = response.data.marca;

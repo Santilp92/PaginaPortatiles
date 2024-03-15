@@ -40,7 +40,7 @@ export default {
       let userId = decodeToken.user_id;
 
       axios
-        .get(`http://127.0.0.1:8000/user/${userId}/`, {
+        .get(`https://santilp92.pythonanywhere.com/user/${userId}/`, {
           headers: { Authorization: `Bearer ${token}`},
         })
         .then((response) => {
@@ -56,7 +56,7 @@ export default {
     verifyToken: function () {
       return axios
         .post(
-          "http://127.0.0.1:8000/refresh/",
+          "https://santilp92.pythonanywhere.com/refresh/",
           { refresh: localStorage.getItem("token_refresh") },
           { headers: {} }
         )

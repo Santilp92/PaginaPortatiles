@@ -269,7 +269,7 @@ export default {
     "loadNewPc",
     "loadHome"
   ],
-  
+
   data() {
     return {
       listaPc: [],
@@ -278,7 +278,7 @@ export default {
 
   mounted() {
     axios
-      .get("http://127.0.0.1:8000/lista/")
+      .get("https://santilp92.pythonanywhere.com/lista/")
       .then((response) => {
         this.listaPc = response.data;
       })

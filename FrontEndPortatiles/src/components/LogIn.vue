@@ -28,7 +28,7 @@ import axios from "axios";
 
 export default {
   name: "LogIn",
-  
+
   data: function () {
     return {
       user: {
@@ -40,7 +40,7 @@ export default {
   methods: {
     processLogInUser: function () {
       axios
-        .post("http://127.0.0.1:8000/login/", this.user, { headers: {} })
+        .post("https://santilp92.pythonanywhere.com/login/", this.user, { headers: {} })
         .then((result) => {
           let dataLogIn = {
             username: this.user.username,

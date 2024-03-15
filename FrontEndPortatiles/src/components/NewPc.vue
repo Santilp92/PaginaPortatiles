@@ -138,7 +138,7 @@ export default {
   name: "NewPc",
 
   data() {
-    
+
     return {
       portatil: {
         id: null,
@@ -153,7 +153,7 @@ export default {
         color: "",
         imagen: "",
       },
-    }; 
+    };
   },
   methods: {
     handleFileChange(event) {
@@ -179,7 +179,7 @@ export default {
 
         // Realiza la solicitud POST con Axios
         const response = await axios.post(
-          "http://127.0.0.1:8000/nuevoPortatil/",
+          "https://santilp92.pythonanywhere.com/nuevoPortatil/",
           formData,
           {
             headers: {
